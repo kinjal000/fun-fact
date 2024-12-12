@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Food Facts</title>
+    <style>
+        .food-facts-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .fact-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .fact-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .fact-detail {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="food-facts-container"></div>
+
+    <script>
+        class FoodFactsDisplay {
+            constructor(data) {
+                this.facts = data.foodFacts;
+                this.container = document.querySelector('.food-facts-container');
+            }
+
+            displayFacts() {
+                this.facts.forEach(fact => {
+                    const factCard = document.createElement('div');
+                    factCard.className = 'fact-card';
+                    
+                    factCard.innerHTML = `
+                        <div class="fact-title">${fact.fact}</div>
+                        <div class="fact-detail">${fact.detail}</div>
+                    `;
+                    
+                    this.container.appendChild(factCard);
+                });
+            }
+        }
+
+        // Food facts data
+        const foodFactsData = {
+            "foodFacts": [
+                {
+                    "id": 1,
+                    "fact": "Honey never spoils",
+                    "detail": "3000-year-old honey found in Egyptian tombs was still edible due to its low moisture content and high acidity"
+                },
+                {
+                    "id": 2,
+                    "fact": "Bananas are berries",
+                    "detail": "Botanically, bananas are berries while strawberries are actually accessory fruits"
+                },
+                {
+                    "id": 3,
+                    "fact": "Cheese is highly stolen",
+                    "detail": "Approximately 4% of all cheese produced globally ends up being stolen"
+                },
+                {
+                    "id": 4,
+                    "fact": "Saffron is extremely expensive",
+                    "detail": "It costs up to $3,000 per pound, with each flower producing only three stigmas"
+                },
+                {
+                    "id": 5,
+                    "fact": "Carrots were originally purple",
+                    "detail": "Dutch growers bred them orange in the 17th century to honor the House of Orange"
+                },
+                {
+                    "id": 6,
+                    "fact": "Apples float in water",
+                    "detail": "They are 25% air, which makes them buoyant in water"
+                },
+                {
+                    "id": 7,
+                    "fact": "White chocolate isn't real chocolate",
+                    "detail": "It contains no cocoa solids, only cocoa butter, sugar, and milk products"
+                },
+                {
+                    "id": 8,
+                    "fact": "Corn has even rows",
+                    "detail": "A typical ear of corn has an even number of rows, usually 16, with approximately 800 kernels"
+                },
+                {
+                    "id": 9,
+                    "fact": "Ketchup was medicine",
+                    "detail": "In the 1830s, ketchup was sold as medicine to treat various ailments including diarrhea"
+                },
+                {
+                    "id": 10,
+                    "fact": "Chili heat misconception",
+                    "detail": "The hottest part of a chili pepper is the white membrane, not the seeds as commonly believed"
+                }
+            ]
+        };
+
+        // Initialize the display
+        const foodFactsDisplay = new FoodFactsDisplay(foodFactsData);
+        foodFactsDisplay.displayFacts();
+    </script>
+</body>
+</html>
